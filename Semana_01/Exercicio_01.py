@@ -1,5 +1,5 @@
 def saldo_inicial():
-    saldo = input(float("Digite seu saldo atual: "))
+    saldo = float(input("Digite seu saldo atual: "))
     return saldo
 
 def menu():
@@ -9,40 +9,43 @@ def menu():
     print("4- sair")
 
 def escolha():
-    opc = input(int("Digite a opção desejada: "))
+    opc = int(input("Digite a opção desejada: "))
     return opc
 
 def mostrar_saldo(saldo):
     print("Seu saldo atual é de: ", saldo)
-
+    
 def deposito(saldo, depositos_efetuados):
-    valor = input(float("Digite o valor do depósito: "))
+    valor = float(input("Digite o valor do depósito: "))
     saldo = saldo + valor
     depositos_efetuados.append(valor)
     return saldo, depositos_efetuados 
 
 def saque(saldo, saques_efetuados):
-    valor = input(float("Digite o valor do saque: "))
-    if saldo >= saque:
-        saldo = saldo - saque
+    valor = float(input("Digite o valor do saque: "))
+    if saldo >= valor:
+        saldo = saldo - valor
         saques_efetuados.append(valor)
     else:
         print("Saldo insuficiente!")
     return saldo, saques_efetuados
  
 def main():
-    depositos_efetuados = []
-    saques_efetuados = []
     saldo = saldo_inicial()
     menu()
+    depositos_efetuados = []
+    saques_efetuados = []
     opc = escolha()
     while opc != 4:
         if opc == 1:
             mostrar_saldo(saldo)
+            opc = escolha()
         elif opc == 2:
-            deposito(saldo, depositos_efetuados)
+            saldo, depositos_efetuados = deposito(saldo, depositos_efetuados)
+            opc = escolha()
         elif opc == 3:
-            saque(saldo, saques_efetuados)
+            saldo, saques_efetuados = saque(saldo, saques_efetuados)
+            opc = escolha()
     print("Você saiu!")
     print("Depósitos efetuados: ", depositos_efetuados)
     print("Saques efetuados: ", saques_efetuados)
