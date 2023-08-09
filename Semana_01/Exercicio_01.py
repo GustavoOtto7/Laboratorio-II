@@ -1,5 +1,3 @@
-exercicio_1.py
-
 def saldo_inicial():
     saldo = input(float("Digite seu saldo atual: "))
     return saldo
