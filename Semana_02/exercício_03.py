@@ -1,10 +1,12 @@
 def calculation(matriz):
     soma = []
-    for line in range(len(matriz)):
-        for column in range(len(matriz[line])):
-            if matriz[line][column] >= matriz[line]:
-                matriz[line][column].append(soma)
-            return soma
+    for line in matriz:
+        maior = line[0]
+        for column in line:
+            if column > maior:
+                maior = column 
+        soma.append(maior)
+    return soma
 
 def main():
     matriz = [
@@ -13,5 +15,6 @@ def main():
         [7, 8, 9]
     ]
     soma = calculation(matriz)
-    print(soma)
+    soma_total = sum(soma)
+    print(soma_total)
 main()
