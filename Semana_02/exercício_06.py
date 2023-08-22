@@ -2,9 +2,9 @@ def check_simmetric(matriz):
     n = len(matriz)
     for i in range(n):
             for j in range(n):
-                if i != j and matriz[i][j] != matriz[j][i]:
+                if matriz[i][j] != matriz[j][i] and matriz[j][i] != matriz[i][j]:
                     print("A sua matriz quadrada não é simétrica!")
-                    return
+                    break
     print("A sua matriz quadrada é simétrica!")
 def main():
     matriz = [
