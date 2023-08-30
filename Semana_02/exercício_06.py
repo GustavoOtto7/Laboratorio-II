@@ -8,7 +8,7 @@ def check_simmetric(matriz):
 
 def main():
     matriz = [
-        [1, 2, 8],
+        [1, 2, 3],
         [2, 4, 5],
         [3, 5, 6]
     ]
