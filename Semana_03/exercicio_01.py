@@ -15,12 +15,11 @@ def generate_bingo():
             num = random.randint(0, 99)
             while not validate_number(matriz, num):
                 num = random.randint(0, 99)
-            matriz[line].append(num)   
+            matriz[line].append(num)  
     return matriz
 
 def main():
     matriz = generate_bingo()
-    print(matriz)    
-
-
+    for line in matriz:
+        print(line)    
 main()
