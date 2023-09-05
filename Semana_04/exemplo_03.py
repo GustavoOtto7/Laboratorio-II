@@ -13,5 +13,4 @@ def main():
     dict = verify(list)
     print("Lista de repetições: ")
     print("Resultado: -> ", dict)
-
 main()
