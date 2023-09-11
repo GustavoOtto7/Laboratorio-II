@@ -5,30 +5,34 @@ def menu():
     print("3- Vizualizar todos os produtos: ")
     print("4- Vender um produto: ")
     print("5- Relatório de vendas: ")
-    opc = input("O que você deseja? ")
+    opc = int(input("O que você deseja? "))
     return opc
 
 def add_product(stock):
-    if product not in stock:
-        product = input("Digite o nome do produto: ")
-        stock = product
-        for product in stock:
-            quant_in_stock = int(input("Digite a quantidade em estoque: "))
-            price = float(input("Digite o preço do produto: "))
-    return product, quant_in_stock, price
+    product = input("Digite o nome do produto: ")
+    quant_in_stock = int(input("Digite a quantidade do produto: "))
+    price = float(input("Digite o preço do produto: "))
+        
+    stock[product] = {
+      "Quantidade:": quant_in_stock,
+      "Valor": price
+    }
+    return stock
 ''' else:
         print("Você já possui esse produto!")
         quant = int(input("Digite a quantidade que será incrementada ao estoque: "))
         quant_in_stock += quant'''
-
     
 
 def main():
-    stock = {
-        "product" : {"Quantidade" : quant_in_stock, "Valor" : price}}
-    opc = menu()
-    if opc == 1:
-        product, quant_in_stock, price = add_product(stock)
-        print(stock)
+    stock = {}
+    opc = 0
+    while opc != 6:
+        opc = menu()
+        if opc == 1:
+            stock= add_product(stock)
+            print(stock)
+
+    print("Você saiu!")
 
 main()
