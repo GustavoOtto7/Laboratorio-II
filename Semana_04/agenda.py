@@ -50,6 +50,10 @@ def delete_phone(contacts):
 
 def delete_contact(contacts):
     name = input("Digite o nome que você deseja remover: ")
+    if name in contacts:
+        contacts.pop(name)
+    else:
+        print(f'O contato {name} não existe')
 
 def find_contact(contacts):
     name = input("> Digite o nome do contato: ")
