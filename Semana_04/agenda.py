@@ -18,7 +18,7 @@ def add_contact(contacts, contact_name = None):
     contacts[name] = []
     while True:
         phone = input(f"> Digite um número para o contato {name}: ")
-        if  phone == "":
+        if phone == "":
             break
         contacts[name].append(phone)
 
