@@ -41,7 +41,7 @@ def produto_estoque(stock):
         price = product_info["price"]
         print(f"Produto: {product_name}, Quantidade: {amount}, Preço: {price}")
 
-def venda_produto(stock):
+def venda_produto(stock, sales_dict):
     product_name = input("Digite o nome do produto vendido: ")
     quantity_sold = int(input("Digite a quantidade vendida: "))
     if product_name in stock:
@@ -51,16 +51,24 @@ def venda_produto(stock):
             product['amount'] -= quantity_sold
             sale_value = quantity_sold * product['price']
             print(f"Venda realizada com sucesso! Valor total: R$ {sale_value}")
+            sales_dict[product_name] = {"quantidade_amount": quantity_sold, 
+                                        "valor_price": sale_value}
         else:
             print("Quantidade em estoque insuficiente.")
     else:
         print("Produto não encontrado no estoque.")
 
-'''def sales_report(stock):'''
-
+def sales_report(sales_dict):
+        index = 0
+        for product_name in sales_dict.keys():
+            index += 1
+            quantity_sold = sales_dict[product_name]["quantidade_amount"]
+            sale_value = sales_dict[product_name]["valor_price"]
+            print(f"Venda - {index}: Produto: {product_name} Quantidade vendida: {quantity_sold} No valor total de: R${sale_value}")
         
 def main():
-    stock= {}
+    stock = {}
+    sales_dict = {}
     while True:
         opc = menu()
         if opc == 1:
@@ -74,13 +82,11 @@ def main():
             produto_estoque(stock)
         elif opc == 4:
             while True:
-                venda_produto(stock)
+                venda_produto(stock, sales_dict)
                 if input("Deseja vender outro produto? (s/n): ").lower() != "s":
                     break
         elif opc == 5:
-            sales_report(stock)
-
+            sales_report(sales_dict)
 main()
 
 #retirar o produto quando seu estoque for zero
-#fazer o relatório de vendas
