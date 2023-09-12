@@ -5,6 +5,7 @@ def menu():
     print("3- Vizualizar todos os produtos: ")
     print("4- Vender um produto: ")
     print("5- Relatório de vendas: ")
+    print("6- Sair")
     opc = int(input("O que você deseja? "))
     return opc
 
@@ -75,7 +76,8 @@ def sales_report(sales_dict):
 def main():
     stock = {}
     sales_dict = {}
-    while True:
+    opc = 0
+    while opc <= 5:
         opc = menu()
         if opc == 1:
             while True:
@@ -93,4 +95,5 @@ def main():
                     break
         elif opc == 5:
             sales_report(sales_dict)
+    print("Você saiu!")
 main()
