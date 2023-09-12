@@ -30,7 +30,7 @@ def main():
     while opc != 6:
         opc = menu()
         if opc == 1:
-            stock= add_product(stock)
+            stock = add_product(stock)
             print(stock)
 
     print("Você saiu!")
