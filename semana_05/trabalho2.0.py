@@ -8,28 +8,27 @@ def menu():
     opc = int(input("O que você deseja? "))
     return opc
 
-def adicionar_produto(stock):
+def add_product(stock):
     product_name = input("Digite o nome do produto: ")
     if product_name == '':
         return
-    elif product_name in stock.keys():
+    if product_name in stock:
         temp_quantity = int(input("Digite a quantidade do produto: "))
-        stock["amount"][product_amount] = sum(temp_quantity + stock["amount"][product_amount])
+        stock[product_name]["amount"] += temp_quantity
     else:
         product_amount = int(input("Digite a quantidade do produto: "))
         product_price = float(input("Digite o preço do produto: R$"))
-    stock[product_name] = {
-      "amount": product_amount,
-      "price": product_price}
+        stock[product_name] = {
+            "amount": product_amount,
+            "price": product_price}
     for product_name, product_info in stock.items():
         amount = product_info["amount"]
         price = product_info["price"]
     print(f"O produto {product_name} foi adicionado com sucesso!")
     print(f"Produto: {product_name}, Quantidade: {amount}, Preço: {price}")
     return stock
-    
 
-def buscar_produto(stock):
+def find_product(stock):
     product_name = input("Digite o nome do Produto: ")
     if product_name in stock:
         print(f"Procurando {product_name}...")
@@ -40,13 +39,13 @@ def buscar_produto(stock):
     else:
         print(f"Produto {product_name} não registrado")
 
-def produto_estoque(stock):
+def show_stock(stock):
     for product_name, product_info in stock.items():
         amount = product_info["amount"]
         price = product_info["price"]
         print(f"Produto: {product_name}, Quantidade: {amount}, Preço: {price}")
 
-def venda_produto(stock, sales_dict):
+def sale_product(stock, sales_dict):
     product_name = input("Digite o nome do produto vendido: ")
     quantity_sold = int(input("Digite a quantidade vendida: "))
     if product_name in stock:
@@ -55,13 +54,15 @@ def venda_produto(stock, sales_dict):
         if quantity_sold <= current_quantity:
             product['amount'] -= quantity_sold
             sale_value = quantity_sold * product['price']
+            if stock[product_name]['amount'] == 0:
+                stock.pop(product_name)
             print(f"Venda realizada com sucesso! Valor total: R$ {sale_value}")
-            sales_dict[product_name] = {"quantidade_amount": quantity_sold, 
-                                        "valor_price": sale_value}
+            sales_dict[product_name] = {"quantidade_amount": quantity_sold, "valor_price": sale_value}
         else:
             print("Quantidade em estoque insuficiente.")
     else:
         print("Produto não encontrado no estoque.")
+    return stock
 
 def sales_report(sales_dict):
         index = 0
@@ -78,19 +79,18 @@ def main():
         opc = menu()
         if opc == 1:
             while True:
-                adicionar_produto(stock)
+                stock = add_product(stock)
                 if input("Deseja adicionar outro produto? (s/n): ").lower() != "s":
                     break
         elif opc == 2:
-            buscar_produto(stock)
+            find_product(stock)
         elif opc == 3:
-            produto_estoque(stock)
+            show_stock(stock)
         elif opc == 4:
             while True:
-                venda_produto(stock, sales_dict)
+                stock = sale_product(stock, sales_dict)
                 if input("Deseja vender outro produto? (s/n): ").lower() != "s":
                     break
         elif opc == 5:
             sales_report(sales_dict)
 main()
-#retirar o produto quando seu estoque for zero
