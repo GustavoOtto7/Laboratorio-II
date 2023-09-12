@@ -1,4 +1,3 @@
-
 def menu():
     print("## MERCADINHO DO SEU ZÉ ##")
     print("1- Adicionar um produto: ")
@@ -13,8 +12,12 @@ def adicionar_produto(stock):
     product_name = input("Digite o nome do produto: ")
     if product_name == '':
         return
-    product_amount = int(input("Digite a quantidade do produto: "))
-    product_price = float(input("Digite o preço do produto: R$"))
+    elif product_name in stock.keys():
+        temp_quantity = int(input("Digite a quantidade do produto: "))
+        stock["amount"][product_amount] = sum(temp_quantity + stock["amount"][product_amount])
+    else:
+        product_amount = int(input("Digite a quantidade do produto: "))
+        product_price = float(input("Digite o preço do produto: R$"))
     stock[product_name] = {
       "amount": product_amount,
       "price": product_price}
@@ -23,6 +26,8 @@ def adicionar_produto(stock):
         price = product_info["price"]
     print(f"O produto {product_name} foi adicionado com sucesso!")
     print(f"Produto: {product_name}, Quantidade: {amount}, Preço: {price}")
+    return stock
+    
 
 def buscar_produto(stock):
     product_name = input("Digite o nome do Produto: ")
@@ -88,5 +93,4 @@ def main():
         elif opc == 5:
             sales_report(sales_dict)
 main()
-
 #retirar o produto quando seu estoque for zero
