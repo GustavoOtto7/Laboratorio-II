@@ -5,4 +5,4 @@ def get_number_diferent_zero(message):
             return value
         else:
             print("Número inválido!")
-            
+            value = int(input("Digite um número: "))
