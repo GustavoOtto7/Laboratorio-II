@@ -68,14 +68,12 @@ def find_product_category(stock):
 
         for product in stock.values():
             if product['category'] == product_category:
-                print(product)
-                   
+                print(product)      
             else:
                 print(f"Categoria não encontrada.")
                 return
     elif opc == 3:
         return
-
 
 def remover_product(stock, product_remove_lista = None):
     """Remover Produto"""
