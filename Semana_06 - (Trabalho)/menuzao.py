@@ -3,7 +3,7 @@ def show_menu():
     print(30*'-_')
     print("##  MERCADINHO DO SEU ZÉ ##")
     print("1 - Adicionar um produto: ")
-    print("2 - Mudar valor do Produto: ")
+    print("2 - Alterar valor de um Produto: ")
     print("3 - Remover um produto: ")
     print("4 - Buscar um produto: ")
     print("5 - Historia de Estoque: ")
