@@ -1,11 +1,15 @@
-def add_product(stock):
+def add_product(stock, product_additions):
     """Adiconar/Verificar um Produto ao Estoque"""
     product_name = input("Digite o nome do produto: ")
     if product_name == '':
         return
     if product_name in stock:
+        product_additions = []
+        print(f"{product_name} Já está no STOCK")
         temp_quantity = int(input("Digite a quantidade do produto: "))
         stock[product_name]["amount"] += temp_quantity
+        product_additions.append((product_name, temp_quantity))
+        
     else:
         product_amount = int(input("Digite a quantidade do produto: "))
         product_price = float(input("Digite o preço do produto: R$"))
@@ -19,28 +23,24 @@ def add_product(stock):
         amount = product_info["amount"]
         price = product_info["price"]
         category = product_info["category"]
-    print(f"O produto {product_name} foi adicionado com sucesso!")
     print(f"Produto: {product_name}, Quantidade: {amount}, Preço: {price}, Categoria: {category}")
-    return stock
+    print(f"O produto {product_name} foi adicionado com sucesso!")
+    return stock, product_additions
 
-def change_product_value(stock, product_upgrade = None):
+def change_product_value(stock, product_upgrade):
     """Alterar Valor de Produto"""
-    product_upgrade = []
-    product_name = input("Qual produto deseja mudar o valor ? ")
-    if product_name in stock.keys():
+    product_name = input("Qual produto deseja mudar o valor? ")
+    
+    if product_name in stock:
         print(f"Procurando {product_name}")
-        new_price = float(input("Digite novo valor: "))
+        new_price = float(input("Digite o novo valor: "))
         stock[product_name]["price"] = new_price
-        print(f"Novo valor: {new_price}")
-        product_upgrade.append(new_price)
-        #print(product_upgrade)
+        print(f"Novo valor {product_name}: {new_price}")
+        product_upgrade.append((product_name, new_price))
+        return stock, product_upgrade
+        
     else:
         print(f"{product_name} não encontrado.")
-    return stock, product_upgrade
-        
-
-
-    return stock
     
 def find_product_category(stock):
     """Buscar produto no estoque / Categoria no Stock"""
@@ -52,11 +52,9 @@ def find_product_category(stock):
         product_name = input("Digite o nome do Produto: ")
         if product_name in stock:
             print(f"Procurando {product_name}...")
-            
             amount = stock[product_name]["amount"]
             price = stock[product_name]["price"]
             category = stock[product_name]["category"]
-
             print(f"Produto: {product_name}")
             print(f"Quantidade: {amount}") 
             print(f"Preço: {price}")
@@ -68,15 +66,16 @@ def find_product_category(stock):
 
         for product in stock.values():
             if product['category'] == product_category:
-                print(product)      
+                print(product)
+                  
             else:
                 print(f"Categoria não encontrada.")
                 return
     elif opc == 3:
         return
 
-def remover_product(stock, product_remove_lista = None):
-    """Remover Produto"""
+def remover_product(stock, product_remove_lista):
+    """Remover Produto / Adicionar a um historico de Remoção"""
     product_remove_lista = []
     product_name = input("Digite o produto que deseja remover: ")
     if product_name in stock.keys():
@@ -91,16 +90,25 @@ def remover_product(stock, product_remove_lista = None):
     #print(stock)
     return stock, product_remove_lista
         
-def show_stock(stock, product_remove_lista = None, product_upgrade = None):
+def show_stock(stock, product_remove_lista, product_upgrade, product_additions):
     """Mostrar completamente o estoque"""
     for product_name, product_info in stock.items():
         amount = product_info["amount"]
         price = product_info["price"]
         category = product_info["category"]
         print(f"Produto: {product_name}, Quantidade: {amount}, Preço: {price}, Categoria: {category}")
-        if product_remove_lista is not None:
-            for remove in product_remove_lista:
-                print(f"Produto Removido:{product_name} {remove}")
-        if product_upgrade is not None:
-            for upgrade in product_upgrade:
-                print(f"Produto Atualizado: {product_name}, Novo Valor: {upgrade}")
+    print(30*"-_")
+    if product_remove_lista is not None:
+        for remove in product_remove_lista:
+            print(f"Produto Removido: {product_name}")
+        print(30*"-_")
+    if product_upgrade is not None:
+        for upgrade in product_upgrade:
+            product_name, new_price = upgrade
+            print(f"Produto Atualizado: {product_name} - Novo Valor: {new_price}  ")
+        print(30*"-_")
+    if product_additions is not None:
+        for new_additions in product_additions:
+            product_name, temp_quantity = new_additions
+            print(f"Novo valor do {product_name}: {temp_quantity} ")
+        print(30*"-_")

@@ -7,11 +7,12 @@ def main():
     sales_dict = {}
     product_remove_lista = []
     product_upgrade = []
+    product_additions = []
     while True:
         opc = show_menu()
         if opc == 1:
             while True:
-                stock = add_product(stock)
+                stock, product_additions = add_product(stock, product_additions)
                 if input("Deseja adicionar outro produto? (s/n): ").lower() != "s":
                     break
         elif opc == 2:
@@ -21,7 +22,7 @@ def main():
         elif opc == 4:
             find_product_category(stock)
         elif opc == 5:
-            show_stock(stock, product_remove_lista, product_upgrade)
+            show_stock(stock, product_remove_lista, product_upgrade, product_additions)
         elif opc == 6:
             while True:
                 stock = sale_product(stock, sales_dict)
