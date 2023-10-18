@@ -23,4 +23,6 @@ def main():
         print("O ano que você digitou é: ", result)
     except ValueError:
         print("[Erro] Você digitou um valor inválido!")
+    except BaseException as error:
+        print("[Erro] Ocorreu um erro!", error)
 main()
