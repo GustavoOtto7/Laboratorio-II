@@ -48,6 +48,5 @@ def main():
             opc = escolha()
     print("Você saiu!")
     print("Depósitos efetuados: ", depositos_efetuados)
-    print("Saques efetuados: ", saques_efetuados)
-    
+    print("Saques efetuados: ", saques_efetuados)   
 main()
