@@ -9,3 +9,6 @@ def get_word():
     line = words_list.readlines()
     for line in words_list:
         print(words_list[line])
+
+
+(word.strip()) para tirar espaços em branco e talvez números
