@@ -42,19 +42,12 @@ def playing_game(draw_word):
                     if word[i] == draw_word[i]:
                         result.append(print_colored(f"{word[i]}", colors.green, colors.negative))
                     else:
-                        letter = 0
-                        while letter != 5:
-                            for x in range(0, 5):
-                                if word[letter] == draw_word[x]:
-                                    result.append(print_colored(f"{word[letter]}", colors.yellow, colors.negative))
-                            else:
-                                result.append(print_colored(f"{word[i]}", colors.white, colors.back_gray))
-                            letter += 1
-                    
-                        
-
-                    
-                print(result)
+                        if word[i] in draw_word:
+                            result.append(print_colored(f"{word[i]}", colors.yellow, colors.negative))
+                        else:
+                            result.append(print_colored(f"{word[i]}", colors.white, colors.back_gray))
+                    print(result)    
+            
                 '''for letter in word:
                     if letter == draw_word[i].upper():
                             print_colored(f"{letter}", colors.green, colors.negative)
