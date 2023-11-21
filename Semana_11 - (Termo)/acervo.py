@@ -12,3 +12,4 @@ def get_word():
 
 
 (word.strip()) para tirar espaços em branco e talvez números
+
