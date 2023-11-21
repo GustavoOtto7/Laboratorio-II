@@ -24,7 +24,7 @@ def check_word(draw_word):
                 draw_word = get_word()
                 break
         else:
-            return draw_word
+            return draw_word.rstrip('\n')
 
 def playing_game(draw_word):
     with open("Laboratorio-II\\Semana_11 - (Termo)\\used_words_list.txt", "a") as used_words_list:
