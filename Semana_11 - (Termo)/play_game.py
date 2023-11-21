@@ -47,24 +47,11 @@ def playing_game(draw_word):
                         else:
                             result.append(print_colored(f"{word[i]}", colors.white, colors.back_gray))
                     print(result)    
-            
-                '''for letter in word:
-                    if letter == draw_word[i].upper():
-                            print_colored(f"{letter}", colors.green, colors.negative)
-                    for i in range(0, 5):
-                        
-        
-                print(f"        {letter[0]} - {letter[1]} - {letter[2]} - {letter[3]} - {letter[4]}")'''
             else:
                 print("Digite uma palavra válida! (Sem espaços, nem números!)")
 
     with open("Laboratorio-II\\Semana_11 - (Termo)\\used_words_list.txt", "w") as used_words_list:
         pass
-
-
-'''if verde
-elif amarelo
-else: branco'''
 
 def main():
     draw_word = get_word()
