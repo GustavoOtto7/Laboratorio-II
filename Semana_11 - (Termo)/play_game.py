@@ -1,5 +1,5 @@
 import random
-from list_colors import colors, print_colored, add_colored
+from colored import colors, print_colored, add_colored
 
 def get_word():
     with open("Laboratorio-II\\Semana_11 - (Termo)\\words_list.txt", "r") as words_list:
@@ -30,12 +30,12 @@ def playing_game(draw_word):
     with open("Laboratorio-II\\Semana_11 - (Termo)\\used_words_list.txt", "a") as used_words_list:
         used_words_list.write(draw_word)
         draw_word = draw_word.rstrip('\n')    
-    for answers in range(0, 5):
-        while True:
+    attemps = 1
+    while attemps != 6:
             word = input("Digite a palavra desejada: ").upper()
             word_size = len(word)
-
             if word_size == 5 and word.isalpha():
+                attemps += 1
                 result = []
                 word = list(word)
                 draw_word = list(draw_word)
@@ -52,14 +52,14 @@ def playing_game(draw_word):
                     print(f"|{letter}|", end=" ") 
                 print()
             else:
-                print("Digite uma palavra válida! (Sem espaços, nem números!)")       
+                print("Digite uma palavra válida! (Sem espaços, nem números e com 5 letras!)")       
 
     with open("Laboratorio-II\\Semana_11 - (Termo)\\used_words_list.txt", "w") as used_words_list:
         pass
 
 '''
 Fazer mensagem de vitória ou derrota
-Verificar contagem de tentativas
+Verificar contagem de tentativas = V
 Verificar letras repetidas
 Tratar melhor os erros
 Ver certinho como limpar o arquivo e oferecer essa opção no menu

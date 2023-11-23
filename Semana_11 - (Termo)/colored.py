@@ -1,19 +1,19 @@
-class colored:
-    reset = '\033[0m'
-    negative = '\033[7m'
-    red = '\033[31m'
-    green = '\033[32m'
-    yellow = '\033[33m'
-    white = '\033[37m'
-    back_color ='\033[40m'
-    back_gray = '\033[47m'
+class colors:
+    normal = 1
+    negative = 7
+    white = 30
+    red = 31
+    green = 32
+    yellow = 33
+    invisible = 37
+    back_color = 40
+    back_gray = 47
 
-class ImpressoraColorida:
-    @staticmethod
-    def imprimir_texto_colorido(texto, colored):
-        cor_formatada = getattr(colored, cor, colored.reset)
-        print(f"{cor_formatada}Erro{colored.reset}", 'Continua normal')
+def print_colored(message, code, code2 = 1):
+    print(f'\033[{code};{code2}m{message}\033[0m')
 
-cor = colored
-impressora = ImpressoraColorida()
-impressora.imprimir_texto_colorido("vermelho", red)
+def add_colored(message, code, code2 = 1):
+    return f'\033[{code};{code2}m{message}\033[0m'
+"""print_colored("Isso é pra ficar vermelho!", colors.red, colors.back_color)
+print_colored("Isso é pra ficar amarelo!", colors.yellow, colors.negative)
+print_colored("Isso é pra sumir!", colors.white, colors.back_gray)"""
