@@ -1,17 +1,12 @@
-def check_sentences():
-    my_file = open('Laboratorio-II/Semana_10/text_sentences.txt', 'r')
-    lines_list = my_file.readline()
-    for line in lines_list:
-        if lines_list != '':
-            words = lines_list.split(',')
-            print(words)
-            lines_list = my_file.readline()
-    print(lines_list)
-    print(words)
-    ''' for line in lines_list:
-        if '''
-
+def check_sentences(word, file_path):
+    file = open(file_path, 'r')
+    lines = file.readlines()
+    for index, line in enumerate(lines):
+        content_line = line.replace(",", "").replace(".", "").split(" ")
+        if word in content_line:
+            print(f"[{index}] -> {line}")
 
 def main():
-    check_sentences()
+    word = input("Digite uma palavra: ")
+    check_sentences(word, 'Laboratorio-II/Semana_10/text_sentences.txt')
 main()
