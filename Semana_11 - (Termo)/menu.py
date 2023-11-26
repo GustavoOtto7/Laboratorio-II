@@ -9,7 +9,6 @@ def principal_menu():
         2- Opções: 
         3- Sair: 
     """)
-        #print_colored("Isso é um teste!", colors.red, colors.negative)
         opc = int(input("Digite o opção desejada: "))
         return opc
     except ValueError:
@@ -43,7 +42,7 @@ def options_menu():
     except BaseException as error:
         print(f"[Erro] - Houve um erro! ({error})")
 
-def main():
+'''def main():
     principal_menu()
     options_menu()
-main()
+main()'''

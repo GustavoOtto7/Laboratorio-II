@@ -31,10 +31,12 @@ def playing_game(draw_word):
         used_words_list.write(draw_word)
         draw_word = draw_word.rstrip('\n')   
     attemps = 1
+    used_words_temp_list = []
     while attemps != 6:
             word = input("Digite a palavra desejada: ").upper()
-            if len(word) == 5 and word.isalpha():
+            if len(word) == 5 and word not in used_words_temp_list and word.isalpha():
                 attemps += 1
+                used_words_temp_list.append(word)
                 result = []
                 word = list(word)
                 draw_word = list(draw_word)
@@ -44,11 +46,10 @@ def playing_game(draw_word):
                     if word[i] == draw_word[i]:
                         right_words += 1
                         result.append(add_colored(f"{word[i]}", colors.green, colors.negative))
-                    else:
-                        if word[i] in draw_word:
+                    elif word[i] in draw_word:
                             result.append(add_colored(f"{word[i]}", colors.yellow, colors.negative))
-                        else:
-                            result.append(add_colored(f"{word[i]}", colors.white, colors.back_gray))
+                    else:
+                        result.append(add_colored(f"{word[i]}", colors.white, colors.back_gray))
                     if right_words == 5:
                         print(f"Parabéns você ganhou!")
                         return False
@@ -56,7 +57,8 @@ def playing_game(draw_word):
                     print(f"|{letter}|", end=" ") 
                 print()
             else:
-                print("Digite uma palavra válida! (Sem espaços, nem números e com 5 letras!)")       
+                print("Digite uma palavra válida! (Sem espaços, nem números e com 5 letras!)")     
+                print("Ou você já digitou essa palavra!")
     print("Você não acertou a palavra, tente numa próxima!")
 
     with open("Laboratorio-II\\Semana_11 - (Termo)\\used_words_list.txt", "w") as used_words_list:
@@ -65,13 +67,12 @@ def playing_game(draw_word):
 '''
 Fazer mensagem de vitória ou derrota
 Verificar contagem de tentativas = V
-Verificar como fazer para o usuário não repetir palavras
+Verificar como fazer para o usuário não repetir palavras = V
 Verificar letras repetidas
 Tratar melhor os erros
-Ver certinho como limpar o arquivo e oferecer essa opção no menu
-Dueto, Quarteto
+Ver certinho como limpar o arquivo e oferecer essa opção no menu = V
+Solo, Dueto, Quarteto
 '''
-
 
 def main():
     draw_word = get_word()
