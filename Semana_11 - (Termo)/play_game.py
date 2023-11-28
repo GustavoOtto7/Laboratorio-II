@@ -42,7 +42,6 @@ def playing_game(draw_word):
                 draw_word = list(draw_word)
                 print(draw_word, word)
                 for i in range(0, 5):
-                    right_words = 0
                     if word[i] == draw_word[i]:
                         right_words += 1
                         result.append(add_colored(f"{word[i]}", colors.green, colors.negative))
