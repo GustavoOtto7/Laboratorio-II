@@ -68,21 +68,3 @@ def playing_game(draw_word_list, attemps, num_words):
         else:
             print("Digite uma palavra válida! (Que não se repita, esteja sem espaços, nem números e tenha 5 letras!)")     
             print("Você não acertou a palavra, tente numa próxima!")
-
-'''
-Fazer mensagem de vitória ou derrota = V
-Verificar contagem de tentativas = V
-Verificar como fazer para o usuário não repetir palavras = V
-Verificar letras repetidas
-Tratar melhor os erros
-Ver certinho como limpar o arquivo e oferecer essa opção no menu = V
-Solo, Dueto, Quarteto
-'''
-'''
-def main():
-    draw_word = get_word()
-    draw_word = check_word(draw_word)
-    playing_game(draw_word)
-
-
-main()'''

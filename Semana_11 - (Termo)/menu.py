@@ -65,9 +65,3 @@ def game_instructions():
         a letra é destacada em {branco}.
         O jogo termina quando a palavra é adivinhada corretamente ou quando o número máximo de tentativas é atingido. 
           ''')
-
-'''def main():
-    principal_menu()
-    options_menu()
-    game_instructions()
-main()'''

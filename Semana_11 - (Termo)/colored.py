@@ -14,6 +14,3 @@ def print_colored(message, code, code2 = 1):
 
 def add_colored(message, code, code2 = 1):
     return f'\033[{code};{code2}m{message}\033[0m'
-"""print_colored("Isso é pra ficar vermelho!", colors.red, colors.back_color)
-print_colored("Isso é pra ficar amarelo!", colors.yellow, colors.negative)
-print_colored("Isso é pra sumir!", colors.white, colors.back_gray)"""
