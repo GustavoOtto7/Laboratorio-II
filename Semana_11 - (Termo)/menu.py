@@ -16,15 +16,22 @@ def principal_menu():
     except BaseException as error:
         print(f"[Erro] - Houve um erro! ({error})")
 
-'''def new_game_menu():
-    print("""
-            TERMO
-        ______________
-        1- Solo:
-        2- Dueto: 
-        3- Quarteto: 
-        4- Sair:
-    """)'''
+def new_game_menu():
+    try:
+        print("""
+                TERMO
+            ______________
+            1- Solo:
+            2- Dueto: 
+            3- Quarteto: 
+            4- Sair:
+        """)
+        opc1_1 = int(input("Digite o opção desejada: "))
+        return opc1_1
+    except ValueError:
+        print(f"[Erro] - Você digitou uma opção inválida!")
+    except BaseException as error:
+        print(f"[Erro] - Houve um erro! ({error})")
 
 def options_menu():
     try:

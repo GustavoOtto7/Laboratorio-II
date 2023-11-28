@@ -1,10 +1,11 @@
-from menu import principal_menu, options_menu
+from menu import principal_menu, new_game_menu, options_menu
 from play_game import get_word, check_word, playing_game
 from colored import colors, print_colored
 
 def main():
     opc = principal_menu()
     if opc == 1:
+        opc1_1 = new_game_menu()
         draw_word = get_word()
         draw_word = check_word(draw_word)
         playing_game(draw_word)
