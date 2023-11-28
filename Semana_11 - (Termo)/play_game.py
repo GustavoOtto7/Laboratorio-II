@@ -6,14 +6,11 @@ def get_word():
         lines = words_list.readlines()    
     num_lines = len(lines) - 1
     num_index = random.randint(0, num_lines)
-    print("Número aleatório sorteado: ",num_index)
     if num_index <= num_lines:
         draw_word = lines[num_index]
-        print(lines[num_index])
         return draw_word.upper()
     else:
         print('Número muito grande!')
-
 def check_word(draw_word):
     while True:
         with open("Laboratorio-II\\Semana_11 - (Termo)\\used_words_list.txt", "r") as used_words_list:
@@ -40,8 +37,8 @@ def playing_game(draw_word_list, attemps, num_words):
                 result = []
                 word = list(word)
                 draw_word = list(draw_word)
-                print(draw_word, word)
                 right_letters = 0
+                print()
                 used_letters = set()
                 for i, letter in enumerate(word):
                     if letter == draw_word[i]:
@@ -53,6 +50,9 @@ def playing_game(draw_word_list, attemps, num_words):
                         used_letters.add(letter)
                     elif letter not in draw_word or letter in used_letters:
                         result.append(add_colored(f"{word[i]}", colors.white, colors.back_gray))
+                for letter in result:
+                    print(f" |{letter}| -", end=" ") 
+                print()
                 if right_letters == 5:
                     right_words += 1
                     draw_word = ''.join(map(str, draw_word)) + '\n'
@@ -61,10 +61,9 @@ def playing_game(draw_word_list, attemps, num_words):
                     if right_words == num_words:
                         print(f"Parabéns você ganhou!")
                         return False
-                for letter in result:
-                    print(f"|{letter}|", end=" ") 
-                print('     ')
-                
         else:
             print("Digite uma palavra válida! (Que não se repita, esteja sem espaços, nem números e tenha 5 letras!)")     
-            print("Você não acertou a palavra, tente numa próxima!")
+    else:
+        print()
+        print(draw_word)
+        print("Você não acertou a palavra, tente numa próxima!")

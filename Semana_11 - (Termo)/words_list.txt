@@ -5,7 +5,7 @@ cesto
 sexta
 vezes
 vinda
-linda
+lindo
 fitas
 cobra
 prato
@@ -45,7 +45,6 @@ cheio
 beijo
 creme
 livro
-coito
 mouro
 largo
 creio
