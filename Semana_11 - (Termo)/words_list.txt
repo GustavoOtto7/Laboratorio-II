@@ -3,3 +3,6 @@ pilar
 vasco
 cesto
 sexta
+vezes
+minta
+vinda

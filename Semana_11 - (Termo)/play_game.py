@@ -1,5 +1,5 @@
 import random
-from colored import colors, print_colored, add_colored
+from colored import colors, add_colored
 
 def get_word():
     with open("Laboratorio-II\\Semana_11 - (Termo)\\words_list.txt", "r") as words_list:
@@ -26,48 +26,48 @@ def check_word(draw_word):
         else:
             return draw_word
 
-def playing_game(draw_word):
-    draw_word = draw_word.rstrip('\n')
-    attemps = 1
+def playing_game(draw_word_list, attemps, num_words):
     used_words_temp_list = []
-    while attemps != 6 or right_words == 5:
-            word = input("Digite a palavra desejada: ").upper()
-            if len(word) == 5 and word not in used_words_temp_list and word.isalpha():
-                attemps += 1
-                used_words_temp_list.append(word)
+    right_words = 0
+    while attemps != 6:
+        word = input("Digite a palavra desejada: ").upper()
+        if len(word) == 5 and word not in used_words_temp_list and word.isalpha():
+            used_words_temp_list.append(word)
+            attemps += 1
+            for x in range(0, num_words):
+                draw_word = draw_word_list[x]
+                draw_word = draw_word.rstrip('\n')
                 result = []
                 word = list(word)
                 draw_word = list(draw_word)
                 print(draw_word, word)
-                right_words = 0
+                right_letters = 0
+                used_letters = set()
                 for i, letter in enumerate(word):
                     if letter == draw_word[i]:
                         result.append(add_colored(f"{letter}", colors.green, colors.negative))
-                        right_words += 1
-                    else:
-                        result.append(None)
-                for i, letter in enumerate(word):
-                    if result[i] is None and letter in draw_word and letter != draw_word[i]:
-                        result[i] = add_colored(f"{letter}", colors.yellow, colors.negative)
-                for i in range(len(draw_word)):
-                    if result[i] is None:
-                        result[i] = add_colored(f"{word[i]}", colors.white, colors.back_gray)
-                for letter in result:
-                    print(f"|{letter}|", end=" ") 
-                print()
-                if right_words == 5:
-                    print(f"Parabéns você ganhou!")
+                        used_letters.add(letter)
+                        right_letters += 1
+                    elif letter in draw_word and letter != draw_word[i] and letter not in used_letters:
+                        result.append(add_colored(f"{letter}", colors.yellow, colors.negative))
+                        used_letters.add(letter)
+                    elif letter not in draw_word or letter in used_letters:
+                        result.append(add_colored(f"{word[i]}", colors.white, colors.back_gray))
+                if right_letters == 5:
+                    right_words += 1
                     draw_word = ''.join(map(str, draw_word)) + '\n'
                     with open("Laboratorio-II\\Semana_11 - (Termo)\\used_words_list.txt", "a") as used_words_list:
                         used_words_list.write(draw_word)    
-                    return False
-            else:
-                print("Digite uma palavra válida! (Sem espaços, nem números e com 5 letras!)")     
-                print("Ou você já digitou essa palavra!")
-    print("Você não acertou a palavra, tente numa próxima!")
-
-    with open("Laboratorio-II\\Semana_11 - (Termo)\\used_words_list.txt", "w") as used_words_list:
-        pass
+                    if right_words == num_words:
+                        print(f"Parabéns você ganhou!")
+                        return False
+                for letter in result:
+                    print(f"|{letter}|", end=" ") 
+                print('     ')
+                
+        else:
+            print("Digite uma palavra válida! (Que não se repita, esteja sem espaços, nem números e tenha 5 letras!)")     
+            print("Você não acertou a palavra, tente numa próxima!")
 
 '''
 Fazer mensagem de vitória ou derrota = V
@@ -78,11 +78,11 @@ Tratar melhor os erros
 Ver certinho como limpar o arquivo e oferecer essa opção no menu = V
 Solo, Dueto, Quarteto
 '''
-
+'''
 def main():
     draw_word = get_word()
     draw_word = check_word(draw_word)
     playing_game(draw_word)
 
 
-main()
+main()'''
