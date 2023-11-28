@@ -11,6 +11,7 @@ def get_word():
         return draw_word.upper()
     else:
         print('Número muito grande!')
+        
 def check_word(draw_word):
     while True:
         with open("Laboratorio-II\\Semana_11 - (Termo)\\used_words_list.txt", "r") as used_words_list:
