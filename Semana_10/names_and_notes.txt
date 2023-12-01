@@ -1,0 +1,5 @@
+Nome: priscila, Média: 9.0
+Nome: gustavo, Média: 8.0
+Nome: rodolfo, Média: 9.5
+Nome: matheo, Média: 5.0
+Nome: matoto, Média: 9.0
