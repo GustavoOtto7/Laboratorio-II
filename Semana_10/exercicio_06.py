@@ -10,7 +10,7 @@ def open_files():
 def verify_grades(names_list, notes_list):
     with open("Laboratorio-II\\Semana_10\\names_and_notes.txt", "w") as my_file_names_and_notes:
         for name, notes in zip(names_list, notes_list):
-            notes = list(map(int, notes.split()))  # Converte as notas para uma lista de inteiros
+            notes = list(map(int, notes.split()))
             average = sum(notes) / len(notes)
             my_file_names_and_notes.write(f"Nome: {name.strip()}, Média: {average}\n")
 
